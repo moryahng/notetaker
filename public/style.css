@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Coming+Soon&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+body{
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
+
+h1{
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+h4{
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+textarea{
+    font-family: 'Coming Soon', cursive;
+}
+
+#formIput textarea{
+    font-size: 14pt;
+
+}
+
+#noteInput{
+    display: flex;
+    justify-content: center;
+    margin: 50px 0px;
+}
+
+#noteInput textarea {
+    width: 55vw;
+    height: 30vw;
+    background: #ececec;
+    border: 0px;
+    filter: drop-shadow(10px 10px 10px #999);
+}
+
+#submit-btn{
+    display: block;
+    margin: 25px;
+}
+
+#notes{
+    margin: 0 20vw;
+}
+
+.note textarea{
+    background: #f6eac2;
+    width: 45vw;
+    border: none;
+    padding: 10px;
+}
+
+.note textarea:focus{
+    outline: none;
+}
+
+.note{
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.removebtn{
+    outline: none;
+    background-color: white;
+    border: none;
+    color: #666;
+    font-size: 20px;
+}
+
+#submit-btn{
+    outline: none;
+    background-color: white;
+    border: none;  
+    color: #97c1a9;
+    font-size: 36px;
+}

@@ -1,0 +1,19 @@
+<h4>Welcome back, {{user}} </h4>
+ <div id="inputSection">  
+    <form id = 'noteInput'>
+        <textarea type="text"></textarea>
+        <button id="submit-btn" type="submit" value="submit">
+        <i class="fas fa-plus-circle"></i></button>
+        </form>
+
+    </form>
+</div> 
+
+<div id="notes">
+    {{#each notes}}
+        <div class="note">
+            <span class="input"><textarea data-id="{{ @index }}">{{ this }}</textarea></span>
+            <button class="removebtn" data-id="{{ @index }}"><i class="fas fa-trash-alt"></i></button>
+        </div>
+    {{/each}}
+</div>
