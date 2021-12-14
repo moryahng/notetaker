@@ -12,8 +12,8 @@
 <div id="notes">
     {{#each notes}}
         <div class="note">
-            <span class="input"><textarea data-id="{{ @index }}">{{ this }}</textarea></span>
-            <button class="removebtn" data-id="{{ @index }}"><i class="fas fa-trash-alt"></i></button>
+            <span class="input"><textarea data-id="{{ this.id }}">{{ this.content }}</textarea></span>
+            <button class="removebtn" data-id="{{ this.id }}"><i class="fas fa-trash-alt"></i></button>
         </div>
     {{/each}}
 </div>

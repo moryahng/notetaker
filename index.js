@@ -7,7 +7,7 @@ const axios = require('axios');
 
 const NoteRouter = require("./router/NoteRouter");
 const NoteService = require("./noteservice");
-const noteService = new NoteService("./note.json", fs)
+
 
 // Express - middleware set up
 app.use(express.json());
@@ -20,36 +20,33 @@ app.engine('handlebars', engine({defaultLayout: "main"}));
 app.set('view engine', 'handlebars');
 app.set("views", "./views");
 
+// connect to databse via knex
+const knexConfig = require("./knexfile").development;
+const knex = require("knex")(knexConfig);
+
+const noteService = new NoteService(knex);
+
 // Basic Auth
 const basicAuth = require("express-basic-auth");
+const AuthChallenger = require("./AuthChallenger");
 app.use(basicAuth({
-    authorizer: myAuthorizer,
+    authorizeAsync: true,
+    authorizer: AuthChallenger(knex),
     challenge: true,
 }));
-
-function myAuthorizer(username, password) {
-    const users = fs.readFileSync('./user.json', 'utf-8', async (error, data) => {
-        if (error) {
-            throw new error ("myAuthorizer")
-        }
-        return data
-    })
-
-    let parsed = JSON.parse(users);
-
-    return parsed.some( (user) => user.username === username && user.password === password)
-}
-
 
 
 app.get("/", (request, response) => {
     noteService.list(request.auth.user).then((data) => {
+        console.log(data, 'index')
         return response.render("index", {
             user: request.auth.user,
-            notes: data
+            notes: data,
         })
     })
 });
+
+
 
 app.use("/api/notes", new NoteRouter(noteService).router())
 
